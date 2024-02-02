@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Plex Cleaner</title>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>Plex Cleaner</strong></li>
+        </ul>
+        <ul>
+            <div class="toolbar">
+                <button class="settings">Settings</button>
+            </div>
+        </ul>
+    </nav>
+      <div id="SettingsModal" class="modal">
+        <div class="modal-content">
+          <header>
+            <span class="settings-title">Settings</span>
+            <div>
+              <button class="save-button">Save</button>
+              <span class="close">&times;</span>
+            </div>
+          </header>
+            <form class="modal-form">
+              <div class="collapsible">
+                <button type="button" >Delete after the number of days</button>
+                <div class="content-hidden">
+                  <span>Delete movies after the number of days</span>
+                  <input type="number" name="sonarr-delete_after_days" placeholder="Delete movies after the number of days">
+                  <span>Delete shows after the number of days</span>
+                  <input type="number" name="radarr-delete_after_days" placeholder="Delete shows after the number of days">
+                </div>
+              </div>
+              <div class="collapsible">
+                <button type="button" >Plex</button>
+                <div class="content-hidden">
+                  <span>Plex Api</span>
+                  <input type="text" name="plex-api" placeholder="Plex api">
+                  <span>Plex Port</span>
+                  <input type="number" name="plex-port" placeholder="Plex port">
+                </div>
+              </div>
+              <div class="collapsible">
+                <button type="button" >Tautulli</button>
+                <div class="content-hidden">
+                  <span>Plex Api</span>
+                  <input type="text" name="tautulli-api" placeholder="Tautulli api">
+                  <span>Plex Port</span>
+                  <input type="number" name="tautulli-port" placeholder="Tautulli port">
+                </div>
+              </div>
+              <div class="collapsible">
+                <button type="button" >Sonarr</button>
+                <div class="content-hidden">
+                  <span>Plex Api</span>
+                  <input type="text" name="sonarr-api" placeholder="Sonarr api">
+                  <span>Plex Port</span>
+                  <input type="number" name="sonarr-port" placeholder="Sonarr port">
+                </div>
+              </div>
+              <div class="collapsible">
+                <button type="button" >Radarr</button>
+                <div class="content-hidden">
+                  <span>Plex Api</span>
+                  <input type="text" name="radarr-api" placeholder="Radarr api">
+                  <span>Plex Port</span>
+                  <input type="number" name="radarr-port" placeholder="Radarr port">
+                </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    <main class="container">
+        <header>
+            <button id="sel_all">Select all</button>
+            <button id="sel_none">Select none</button>
+            <button id="list_all">List all</button>
+            <button id="list_expired">List expired</button>
+            <button id="clear">Clear</button>
+        </header>
+        <section>
+            <span class="base-text">No files to show</span>
+        </section>
+        <footer>
+            <button class="delete-button">Delete</button>
+        </footer>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
