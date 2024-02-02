@@ -8,6 +8,11 @@ from reader import plex_reader, radarr_reader, sonarr_reader, tautilli_reader
 app = Flask(__name__)
 CORS(app)
 
+@app.after_request
+def apply_csp(response):
+    response.headers["Content-Security-Policy"] = "default-src https:; connect-src http:;"
+    return response
+
 config = {}
 with open("config.json", "r") as f:
     config = json.load(f)
