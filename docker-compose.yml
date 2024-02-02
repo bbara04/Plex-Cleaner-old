@@ -1,0 +1,18 @@
+version: '1.0'
+
+services:
+  backend:
+    image: plex-cleaner
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "6565:80"
+    volumes:
+      - ./public:/usr/share/nginx/html
+    depends_on:
+      - backend
