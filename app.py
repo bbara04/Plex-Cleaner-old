@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify, make_response, render_template
 from flask_cors import CORS
 from flask import request
 import requests
@@ -9,9 +9,19 @@ app = Flask(__name__)
 CORS(app)
 
 @app.after_request
-def apply_csp(response):
-    response.headers["Content-Security-Policy"] = "default-src https:; connect-src http:;"
+def set_csp(response):
+    csp = "default-src 'self' http: https: 'unsafe-inline' 'unsafe-eval'"
+    response.headers['Content-Security-Policy'] = csp
     return response
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+#@app.after_request
+#def apply_csp(response):
+#    response.headers["Content-Security-Policy"] = "default-src https:; connect-src http:;"
+#    return response
 
 config = {}
 with open("config.json", "r") as f:
@@ -111,7 +121,6 @@ def delete_media():
             response = requests.delete(f"http://{config['local_ip_address']}:{config['radarr']['port']}/api/v3/movie/{media[0]}?deleteFiles=true&addImportExclusion=false&apikey={config['radarr']['api']}")
 
     return jsonify(data), 200
-
 
 
 f.close()

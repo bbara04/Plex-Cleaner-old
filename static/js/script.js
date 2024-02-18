@@ -1,4 +1,4 @@
-ip_address = "192.168.1.163"
+ip_address = "127.0.0.1"
 port = "5000"
 
 //Base state
