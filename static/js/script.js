@@ -1,8 +1,8 @@
-let port = "5000";
-
 //init config
 function initalizedConfig(config){
     let ip_address = config.local_ip_address;
+    let port = "5000";
+    console.log(ip_address);
 
     //Base state
     //Api fetch
@@ -209,22 +209,7 @@ function initalizedConfig(config){
 
     //Collapsible sections setup
     var collapsible = document.getElementsByClassName("collapsible");
-
-    //Api fetch
-    fetch(`http://${ip_address}:${port}/config`)
-    .then(response => {
-    if (!response.ok) {
-        throw new Error('Hálózati válasz nem volt oké');
-    }
-    return response.json();
-    })
-    .then(data => {
-        //Set values
-        setupCollapsible(data);
-    })
-    .catch(error => {
-        console.error('Hiba történt az API lekérése során:', error);
-    });
+    setupCollapsible(config);
 
     //global config data
     let settings_data = {};
