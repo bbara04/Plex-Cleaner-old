@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, make_response, render_template
+from flask_socketio import SocketIO, emit, send
 from flask_cors import CORS
 from flask import request
 import requests
@@ -6,6 +7,7 @@ import json
 from reader import plex_reader, radarr_reader, sonarr_reader, tautilli_reader
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 CORS(app)
 
 @app.after_request
@@ -23,10 +25,18 @@ def home():
 #    response.headers["Content-Security-Policy"] = "default-src https:; connect-src http:;"
 #    return response
 
-config = {}
-with open("config.json", "r") as f:
-    config = json.load(f)
 
+def read_config():
+    with open("config.json", "r") as f:
+        config = json.load(f)
+    f.close()
+    return config
+
+@socketio.on('custom_event')
+def handle_message(data):
+    print('Received message: ' + data)
+    msg = read_config()
+    emit('config', msg)
 
 def fileNameCrop(str):
         return str.split('/')[-1]
@@ -123,7 +133,6 @@ def delete_media():
     return jsonify(data), 200
 
 
-f.close()
-
 if __name__ == "__main__":
     app.run(debug=True)
+    socketio.run(app)

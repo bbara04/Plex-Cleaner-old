@@ -29,6 +29,13 @@
           </header>
             <form class="modal-form">
               <div class="collapsible">
+                <button type="button" >Ip</button>
+                <div class="content-hidden">
+                  <span>Ip</span>
+                  <input type="text" name="ip" placeholder="ip">
+                </div>
+              </div>
+              <div class="collapsible">
                 <button type="button" >Delete after the number of days</button>
                 <div class="content-hidden">
                   <span>Delete movies after the number of days</span>
@@ -92,5 +99,6 @@
         </footer>
     </main>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 </body>
 </html>
