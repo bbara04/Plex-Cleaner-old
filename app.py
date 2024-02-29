@@ -20,21 +20,9 @@ def set_csp(response):
 def home():
     return render_template('index.html')
 
-#@app.after_request
-#def apply_csp(response):
-#    response.headers["Content-Security-Policy"] = "default-src https:; connect-src http:;"
-#    return response
-
-
 config = {}
 with open("config.json", "r") as f:
     config = json.load(f)
-
-@socketio.on('custom_event')
-def handle_message(data):
-    print('Received message: ' + data)
-    msg = read_config()
-    emit('config', msg)
 
 def fileNameCrop(str):
         return str.split('/')[-1]
@@ -42,14 +30,12 @@ def fileNameCrop(str):
 
 @app.route('/config', methods = ["GET"])
 def get_config():
-    config = {}
-    with open("config.json", "r") as f:
-        configg = json.load(f)
-    return jsonify(configg), 200
+    return jsonify(config), 200
 
 
 @app.route('/config', methods = ["POST"])
 def update_config():
+    global config
     config = request.get_json()
 
     with open("config.json", "w") as f:
