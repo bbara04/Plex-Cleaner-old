@@ -248,23 +248,23 @@ function setupCollapsible(data){
         });
     }
 
-    //Save button setup
-    collapsible = document.getElementsByClassName("collapsible");
+//Save button setup
+collapsible = document.getElementsByClassName("collapsible");
 
-    let save = document.querySelector('.save-button');
-    save.addEventListener('click', function(){
-        for(let section of collapsible){
-            let content = section.children[1];
-            let inputs = content.querySelectorAll('input');
-            for(let input of inputs){
-                if(input.value != ""){
-                    let input_name = input.name;
-                    intput_json = input_name.split("-");
-                    settings_data[intput_json[0]][intput_json[1]] = input.value;
-                }
+let save = document.querySelector('.save-button');
+save.addEventListener('click', function(){
+    for(let section of collapsible){
+        let content = section.children[1];
+        let inputs = content.querySelectorAll('input');
+        for(let input of inputs){
+            if(input.value != ""){
+                let input_name = input.name;
+                intput_json = input_name.split("-");
+                settings_data[intput_json[0]][intput_json[1]] = input.value;
             }
         }
-        setupCollapsible(settings_data);
+    }
+    setupCollapsible(settings_data);
 
     //Api fetch
     fetch('/config',{
@@ -280,4 +280,6 @@ function setupCollapsible(data){
     .then(data =>{
         console.log(data);
     })
+
+    location.reload();
 });
