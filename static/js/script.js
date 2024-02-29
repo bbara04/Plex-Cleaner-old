@@ -117,7 +117,6 @@ sel_all.addEventListener('click', function(){
     let checkboxes = document.querySelectorAll('input[type="checkbox"]');
     for(let checkbox of checkboxes){
         checkbox.checked = true;
-    
     }
     for(let id of all_media_id){
         selected_media.add(id);
@@ -142,16 +141,22 @@ list_clear.addEventListener('click', function(){
     emptyListHandler("No files to show");
 });
 
-//List all button setup
+//Pre-query
 const list_all = document.querySelector('#list_all');
+const list_expired = document.querySelector('#list_expired');
+
+//List all button setup
 list_all.addEventListener('click', function(){
     listFiles(AllMediaJson);
+    list_all.className = "func_button_clicked";
+    list_expired.className = "func_button";
 });
 
 //List expired button setup
-const list_expired = document.querySelector('#list_expired');
 list_expired.addEventListener('click', function(){
     listFiles(ExpiredMediaJson);
+    list_expired.className = "func_button_clicked";
+    list_all.className = "func_button";
 });
 
 //Delete button setup

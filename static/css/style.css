@@ -6,6 +6,15 @@ button {
     background-color: #2C3E50;
     border-color: #2C3E50;
 }
+.func_button:active {
+    background-color: #0e539c;
+    border-color: #34495E;
+}
+.func_button_clicked {
+    background-color: #2C3E50;
+    border-color: #9199a1;
+    border-width: 2px;
+}
 .toolbar {
     display: flex;
     flex-direction: row;
@@ -219,4 +228,7 @@ section {
 .settings-title {
     font-size: larger;
     padding: none;
+}
+.settings {
+    border-width: 0%;
 }
