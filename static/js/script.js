@@ -1,9 +1,6 @@
-ip_address = "127.0.0.1"
-port = "5000"
-
 //Base state
 //Api fetch
-fetch(`http://${ip_address}:${port}/media/all`)
+fetch('/media/all')
 .then(response => {
 if (!response.ok) {
     throw new Error('Hálózati válasz nem volt oké');
@@ -118,7 +115,7 @@ const list_all = document.querySelector('#list_all');
 list_all.addEventListener('click', function(){
 
     //Api fetch
-    fetch(`http://${ip_address}:${port}/media/all`)
+    fetch('/media/all')
     .then(response => {
     if (!response.ok) {
         throw new Error('Hálózati válasz nem volt oké');
@@ -138,7 +135,7 @@ const list_expired = document.querySelector('#list_expired');
 list_expired.addEventListener('click', function(){
 
     //Api fetch
-    fetch(`http://${ip_address}:${port}/media/expired`)
+    fetch('/media/expired')
     .then(response => {
     if (!response.ok) {
         throw new Error('Hálózati válasz nem volt oké');
@@ -163,7 +160,7 @@ button.addEventListener('click', function(){
     }
 
     //Api fetch
-    fetch(`http://${ip_address}:${port}/media`,{
+    fetch('/media',{
         method:'POST',
         body: JSON.stringify(Array.from(jsonforsend)),
         headers: {
@@ -208,12 +205,12 @@ window.addEventListener('click', function(event){
 var collapsible = document.getElementsByClassName("collapsible");
 
 //Api fetch
-fetch(`http://${ip_address}:${port}/config`)
+fetch('/config')
 .then(response => {
-if (!response.ok) {
-    throw new Error('Hálózati válasz nem volt oké');
-}
-return response.json();
+    if (!response.ok) {
+        throw new Error('Hálózati válasz nem volt oké');
+    }
+    return response.json();
 })
 .then(data => {
     //Set values
@@ -234,8 +231,8 @@ function setupCollapsible(data){
         let inputs = content.querySelectorAll('input');
         for(let input of inputs){
             let input_name = input.name;
-            intput_json = input_name.split("-");
-            input.placeholder = data[intput_json[0]][intput_json[1]];
+            let input_json = input_name.split("-");
+            input.placeholder = settings_data[input_json[0]][input_json[1]];
         }
     }
 }
@@ -270,7 +267,7 @@ save.addEventListener('click', function(){
     setupCollapsible(settings_data);
 
     //Api fetch
-    fetch(`http://${ip_address}:${port}/config`,{
+    fetch('/config',{
         method:'POST',
         body: JSON.stringify(settings_data),
         headers: {
