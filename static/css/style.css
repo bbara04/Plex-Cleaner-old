@@ -1,3 +1,5 @@
+/*Base Styles*/
+
 html, body {
     height: 100%;
     background-color: #1E1E1E;
@@ -5,6 +7,23 @@ html, body {
 button {
     background-color: #2C3E50;
     border-color: #2C3E50;
+}
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*Toolbar Styles*/
+
+.func_button:active {
+    background-color: #0e539c;
+    border-color: #34495E;
+}
+.func_button_clicked {
+    background-color: #2C3E50;
+    border-color: #b4bfcb;
+    border-width: 2px;
 }
 .toolbar {
     display: flex;
@@ -19,7 +38,53 @@ button {
     padding: 1.2vh 1.2vw;
     color: #E0E0E0;
 }
-.movie-list-item {
+#clear {
+    background-color: rgb(255, 255, 0);
+    color: black;
+}
+
+
+/*Footer Styles*/
+
+.delete-button {
+    background: #FF3B30;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    max-width: 40vw;
+}
+.delete-button:hover {
+    background: #ff5252;
+}
+
+
+/*Container Styles*/
+
+.container {
+    padding: 1rem;
+}
+@media (max-width: 600px) {
+    .container {
+        padding: 0.5rem;
+    }
+}
+.container header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+.container header button {
+    padding: 1vh 1vw;
+}
+
+
+/*Media List Styles*/
+
+.media-list-item {
     background: #eefbff;
     border-radius: 5px;
     padding: 0.5rem;
@@ -47,49 +112,11 @@ button {
 section::-webkit-scrollbar {
     display: none;
 }
-footer {
-    display: flex;
-    justify-content: center;
-}
-.delete-button {
-    background: #FF3B30;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-    max-width: 40vw;
-}
-.delete-button:hover {
-    background: #ff5252;
-}
-.container {
-    padding: 1rem;
-}
-@media (max-width: 600px) {
-    .container {
-        padding: 0.5rem;
-    }
-}
-.container header {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 0.5rem;
-}
-.container header button {
-    padding: 1vh 1vw;
-}
-section {
+.mediasection {
     display: list-item;
     overflow-y: scroll;
     max-height: 60vh;
     margin-bottom: 0.5rem;
-}
-#clear {
-    background-color: rgb(255, 255, 0);
-    color: black;
 }
 .base-text {
     display: flex;
@@ -99,124 +126,7 @@ section {
     font-size: 2.7vh;
     color: #E0E0E0;
 }
-.movie-list-item label {
+.media-list-item label {
     font-weight: 500;
-    color: rgb(44, 44, 44);
-}
-.popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40vw;
-    height: 60vh;
-    background-color: rgba(30, 30, 30, 0.8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    border-radius: 16px;
-    visibility: hidden;
-}
-.popup .listelement {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1.4rem;
-}
-.popup .listelement span {
-    font-size: 2.5vh;
-    font-weight: 500;
-    color: #E0E0E0;
-    white-space: nowrap;
-}
-.popup .listelement input {
-    max-width: 20vw;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow-y: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.8rem;
-}
-
-.modal-content {
-    background-color: #232323;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 10px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 0.8rem;
-}
-
-.close:hover,
-.close:focus {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Add animation */
-@keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-}
-.modal-form footer{
-    margin-top: none;
-    display: flex;
-    align-items: center;
-}
-.modal-content {
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-}
-
-.collapsible .content-hidden {
-    display: none;
-}
-
-.modal-content header div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-}
-.save-button {
-    background-color: #00c91b;
-    color: #000000;
-    padding: 1.5vh 1.5vw;
-    border-radius: 6px;
-    margin-top: 0.5rem;
-    margin-right: 1rem;
-}
-
-.settings-title {
-    font-size: larger;
-    padding: none;
+    color: rgb(48, 47, 47);
 }
