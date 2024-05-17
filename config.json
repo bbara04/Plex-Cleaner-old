@@ -1,6 +1,1 @@
-{"excluded_lines": [],
-"server": {"ip": "192.168.1.163", "port": 5000}, 
-"plex": {"api": "plexapi", "port": 32400}, 
-"radarr": {"api": "radarrapi", "delete_after_days": "30", "port": 7878}, 
-"sonarr": {"api": "radarrapi", "delete_after_days": "30", "port": 8989},
-"tautulli": {"api": "tautulliapi", "port": 8181}}
+{"excluded_lines": ["anime", "dragon", "prison", "girlfriend"], "plex": {"api": "-JWYqK8V6sorZyzBY263", "port": 32400}, "radarr": {"api": "c349f3b312484de7bb1799006f08a96a", "delete_after_days": "30", "port": 7878}, "server": {"ip": "192.168.1.163", "port": 5000}, "sonarr": {"api": "241b9ffdac3741a0a693d6a3fe224e46", "delete_after_days": "30", "port": 8989}, "tautulli": {"api": "ddc39a5cf5d347ab87c0e22df439088a", "port": 8181}}

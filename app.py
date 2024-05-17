@@ -21,17 +21,28 @@ def home():
     return render_template('index.html')
 
 config = {}
-try:
-    with open("config.json", "r") as f:
-        config = json.load(f)
-except:
-    print("Error reading config file. Exiting...")
-    exit(1)
-
+with open("config.json", "r") as f:
+    config = json.load(f)
 
 def fileNameCrop(str):
         return str.split('/')[-1]
 
+
+@app.route('/config', methods = ["GET"])
+def get_config():
+    return jsonify(config), 200
+
+
+@app.route('/config', methods = ["POST"])
+def update_config():
+    global config
+    config = request.get_json()
+
+    with open("config.json", "w") as f:
+        json.dump(config, f)
+    f.close()
+
+    return jsonify(config), 200
 
 
 @app.route('/media/expired', methods = ['GET'])

@@ -228,3 +228,109 @@ button.addEventListener('click', function(){
         removeChildren(document.querySelector('section'));
         emptyListHandler("Deleted");
     });
+
+
+
+//Settings button setup
+var popup = document.querySelector('#SettingsModal');
+
+var btn = document.querySelector('.settings');
+
+var span = document.querySelector('.close');
+
+btn.addEventListener('click', function(){   
+    popup.style.display = 'block';
+});
+
+span.addEventListener('click', function(){
+    popup.style.display = 'none';
+});
+
+window.addEventListener('click', function(event){
+    if (event.target == popup) {
+        popup.style.display = 'none';
+    }
+});
+
+//Collapsible sections setup
+var collapsible = document.getElementsByClassName("collapsible");
+
+//Api fetch
+fetch('/config')
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Hálózati válasz nem volt oké');
+    }
+    return response.json();
+})
+.then(data => {
+    //Set values
+    setupCollapsible(data);
+})
+.catch(error => {
+    console.error('Hiba történt az API lekérése során:', error);
+});
+
+    //global config data
+    let settings_data = {};
+
+//Set values
+function setupCollapsible(data){
+    settings_data = data;
+    for(let section of collapsible){
+        let content = section.children[1];
+        let inputs = content.querySelectorAll('input');
+        for(let input of inputs){
+            let input_name = input.name;
+            let input_json = input_name.split("-");
+            input.placeholder = settings_data[input_json[0]][input_json[1]];
+        }
+    }
+}
+
+    for(let section of collapsible){
+        section.children[0].addEventListener("click", function() {
+            let content = section.children[1];
+            if (content.className === "content-hidden"){
+                content.className = "content";
+            } else {
+                content.className = "content-hidden";
+            }
+        });
+    }
+
+//Save button setup
+collapsible = document.getElementsByClassName("collapsible");
+
+let save = document.querySelector('.save-button');
+save.addEventListener('click', function(){
+    for(let section of collapsible){
+        let content = section.children[1];
+        let inputs = content.querySelectorAll('input');
+        for(let input of inputs){
+            if(input.value != ""){
+                let input_name = input.name;
+                intput_json = input_name.split("-");
+                settings_data[intput_json[0]][intput_json[1]] = input.value;
+            }
+        }
+    }
+    setupCollapsible(settings_data);
+
+    //Api fetch
+    fetch('/config',{
+        method:'POST',
+        body: JSON.stringify(settings_data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data =>{
+        console.log(data);
+    })
+
+    location.reload();
+});
