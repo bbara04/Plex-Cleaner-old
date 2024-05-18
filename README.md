@@ -37,6 +37,6 @@ docker run -d -p 5059:5000 --name plex-cleaner plex-cleaner
 ## Usage
 You can access the webpage on http://(Your server's ip):5059. Your can list all of your content and specifically the expired contents.
 
-![alt text](https://github.com/bbara04/Plex-Cleaner/blob/main/AppView.png?raw=true)
+![alt text](https://github.com/bbara04/Plex-Cleaner/blob/main/blob/AppView.png?raw=true)
 
 After selecting the movies/shows click delete at the bottom and it deletes from all of your applications linked to plex.
