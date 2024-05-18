@@ -1,6 +1,7 @@
 import requests
 import datetime
 
+# This function is used to read the Tautulli library
 def readTautulli(local_ip, port, api):
 
     response = requests.get(f"http://{local_ip}:{port}/api/v2?apikey={api}&cmd=get_library_names")
@@ -17,6 +18,7 @@ def readTautulli(local_ip, port, api):
             last_played = content['last_played']
             added_at_date = datetime.datetime.utcfromtimestamp(int(added_at))
 
+            # If the media has not been played yet, the last_played field will be the date the media was added
             if last_played is None:
                 last_played_date = added_at_date
             else:
