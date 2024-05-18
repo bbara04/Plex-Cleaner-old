@@ -1,6 +1,6 @@
 {"excluded_lines": [],
-"server": {"ip": "localhost", "port": 5000}, 
+"server": {"ip": "localhost"}, 
 "plex": {"api": "plexapi", "port": 32400}, 
 "radarr": {"api": "radarrapi", "delete_after_days": "30", "port": 7878}, 
-"sonarr": {"api": "radarrapi", "delete_after_days": "30", "port": 8989},
+"sonarr": {"api": "sonarrapi", "delete_after_days": "30", "port": 8989},
 "tautulli": {"api": "tautulliapi", "port": 8181}}
