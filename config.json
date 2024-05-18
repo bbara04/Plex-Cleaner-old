@@ -1,5 +1,5 @@
 {"excluded_lines": [],
-"server": {"ip": "192.168.1.163", "port": 5000}, 
+"server": {"ip": "localhost", "port": 5000}, 
 "plex": {"api": "plexapi", "port": 32400}, 
 "radarr": {"api": "radarrapi", "delete_after_days": "30", "port": 7878}, 
 "sonarr": {"api": "radarrapi", "delete_after_days": "30", "port": 8989},
