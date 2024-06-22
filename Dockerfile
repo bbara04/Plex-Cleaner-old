@@ -1,9 +1,9 @@
 #backend
 FROM python:3.8-alpine
 WORKDIR /app
-COPY ./backend/requirements.txt .
+COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY ./backend/. .
+COPY ./. .
 ENV FLASK_APP=./app.py
 ENV FLASK_ENV=development
 EXPOSE 5000
