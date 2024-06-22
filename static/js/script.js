@@ -85,17 +85,24 @@ async function listFiles(data) {
         //Create media item field
         let list_item_container = document.createElement("div");
         list_item_container.className = "media-list-item";
+        
 
         //Create checkbox
         let list_item_input = document.createElement("input");
         list_item_input.type = "checkbox";
-        list_item_input.addEventListener('change', function(){
-            if(this.checked){
+
+
+        //Div click event
+        list_item_container.addEventListener('click', function(){
+            if(list_item_input.checked == false){
+                list_item_input.checked = true;
                 selected_media.add(str[2]);
             }else{
                 selected_media.delete(str[2]);
+                list_item_input.checked = false;
             }
         });
+        
 
         //Create text container
         let list_text_container = document.createElement("div");
